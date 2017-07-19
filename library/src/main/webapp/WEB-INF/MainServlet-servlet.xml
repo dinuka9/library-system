@@ -1,0 +1,62 @@
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/util
+   http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="lk.dinuka"/>
+    <context:property-placeholder location="classpath*:application.properties"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="userController" class="lk.dinuka.controller.UserController">
+        <property name="userService" ref="userServiceImpl"/>
+        <property name="memberTypeList" ref="memberTypes"/>
+        <property name="bookTypeList" ref="bookTypes"/>
+        <property name="userFormValidator" ref="userFormValidator"/>
+    </bean>
+
+    <bean id="bookController" class="lk.dinuka.controller.BookController">
+        <property name="bookTypeList" ref="bookTypes"/>
+        <property name="bookFormValidator" ref="booFormValidator"/>
+    </bean>
+
+    <util:list id="memberTypes" value-type="java.lang.String">
+        <value>Student</value>
+        <value>Professor</value>
+        <value>Executive</value>
+        <value>Staff</value>
+        <value>Lecturer</value>
+    </util:list>
+
+    <util:list id="bookTypes" value-type="java.lang.String">
+        <value>Science</value>
+        <value>Maths</value>
+        <value>History</value>
+        <value>Religion</value>
+    </util:list>
+
+    <bean id="userServiceImpl" class="lk.dinuka.service.serviceImpl.UserServiceImpl"/>
+
+    <bean id="bookServiceImpl" class="lk.dinuka.service.serviceImpl.BookServiceImpl"/>
+
+    <bean id="userFormValidator" class="lk.dinuka.util.UserFormValidator"/>
+
+    <bean id="booFormValidator" class="lk.dinuka.util.BookFormValidator"/>
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename">
+            <value>classpath:messages</value>
+        </property>
+    </bean>
+
+</beans>
