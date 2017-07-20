@@ -1,7 +1,7 @@
-package lk.dinuka.core.service;
+package lk.dinuka.web.service;
 
 import lk.dinuka.core.domain.DomainUser;
-import lk.dinuka.core.model.FormUser;
+import lk.dinuka.web.model.FormUser;
 
 import java.util.List;
 

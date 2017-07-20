@@ -1,7 +1,7 @@
-package lk.dinuka.core.service;
+package lk.dinuka.web.service;
 
 import lk.dinuka.core.domain.DomainBook;
-import lk.dinuka.core.model.FormBook;
+import lk.dinuka.web.model.FormBook;
 
 import java.util.List;
 

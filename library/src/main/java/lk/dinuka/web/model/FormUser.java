@@ -1,4 +1,4 @@
-package lk.dinuka.core.model;
+package lk.dinuka.web.model;
 
 import java.util.List;
 

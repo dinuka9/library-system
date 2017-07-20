@@ -1,9 +1,9 @@
-package lk.dinuka.core.controller;
+package lk.dinuka.web.controller;
 
-import lk.dinuka.core.model.FormBook;
-import lk.dinuka.core.model.FormUser;
-import lk.dinuka.core.service.UserService;
-import lk.dinuka.core.util.UserFormValidator;
+import lk.dinuka.web.model.FormBook;
+import lk.dinuka.web.model.FormUser;
+import lk.dinuka.web.service.UserService;
+import lk.dinuka.web.util.UserFormValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,6 +22,7 @@ import java.util.List;
 public class UserController {
 
     private static int nextUserId = 1;
+
     private UserService userService;
     private UserFormValidator userFormValidator;
     private List<String> memberTypeList;
@@ -43,20 +44,6 @@ public class UserController {
 
         return "home";
     }
-
-//    @RequestMapping(value = "/addnewuser", method = RequestMethod.GET)
-//    public String addNewUser(ModelMap modelMap) {
-//
-//        FormUser formUser = new FormUser();
-//        formUser.setUserId(nextUserId.get());
-//        formUser.setMemberTypelist(memberTypeList);
-//
-//        FormBook formBook = new FormBook();
-//
-//        modelMap.addAttribute("user", formUser);
-//
-//        return "redirect:/";
-//    }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") FormUser formUser, BindingResult bindingResult,

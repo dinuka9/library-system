@@ -1,6 +1,6 @@
-package lk.dinuka.core.util;
+package lk.dinuka.web.util;
 
-import lk.dinuka.core.model.FormBook;
+import lk.dinuka.web.model.FormBook;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;

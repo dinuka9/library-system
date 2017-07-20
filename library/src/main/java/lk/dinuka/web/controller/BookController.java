@@ -1,10 +1,10 @@
-package lk.dinuka.core.controller;
+package lk.dinuka.web.controller;
 
-import lk.dinuka.core.model.FormBook;
-import lk.dinuka.core.model.FormUser;
-import lk.dinuka.core.service.BookService;
-import lk.dinuka.core.service.serviceImpl.BookServiceImpl;
-import lk.dinuka.core.util.BookFormValidator;
+import lk.dinuka.web.model.FormBook;
+import lk.dinuka.web.model.FormUser;
+import lk.dinuka.web.service.BookService;
+import lk.dinuka.web.service.serviceImpl.BookServiceImpl;
+import lk.dinuka.web.util.BookFormValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

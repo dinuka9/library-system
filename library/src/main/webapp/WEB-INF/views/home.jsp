@@ -41,11 +41,11 @@
 </head>
 <body>
 
-<div class="row">
-    <div class="col-md-12">
-        <img src="/library/WEB-INF/views/images/libraries_lms.jpg" alt="">
-    </div>
-</div>
+<%--<div class="row">--%>
+    <%--<div class="col-md-12">--%>
+        <%--<img src="/WEB-INF/views/images/homeimage.jpg" alt="">--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 <div class="row">
     <div class="col-md-3"></div>
