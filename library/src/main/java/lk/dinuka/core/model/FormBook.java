@@ -1,19 +1,34 @@
-package lk.dinuka.model;
+package lk.dinuka.core.model;
+
+import java.util.List;
 
 /**
  * Created by dinuka on 7/17/17.
  */
-public class DomainBook {
+public class FormBook {
     private int bookId;
     private String bookName;
     private String bookAuthor;
     private String bookType;
+    private List<String> bookTypeList;
 
-    public DomainBook(int bookId, String bookName, String bookAuthor, String bookType) {
-        this.bookId = bookId;
-        this.bookName = bookName;
-        this.bookAuthor = bookAuthor;
+    public FormBook() {
+    }
+
+    public String getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(String bookType) {
         this.bookType = bookType;
+    }
+
+    public List<String> getBookTypeList() {
+        return bookTypeList;
+    }
+
+    public void setBookTypeList(List<String> bookTypeList) {
+        this.bookTypeList = bookTypeList;
     }
 
     public int getBookId() {
@@ -38,13 +53,5 @@ public class DomainBook {
 
     public void setBookAuthor(String bookAuthor) {
         this.bookAuthor = bookAuthor;
-    }
-
-    public String getBookType() {
-        return bookType;
-    }
-
-    public void setBookType(String bookType) {
-        this.bookType = bookType;
     }
 }

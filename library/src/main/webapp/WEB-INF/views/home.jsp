@@ -43,7 +43,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <img src="./images/libraries_lms.jpg" alt="">
+        <img src="/library/WEB-INF/views/images/libraries_lms.jpg" alt="">
     </div>
 </div>
 

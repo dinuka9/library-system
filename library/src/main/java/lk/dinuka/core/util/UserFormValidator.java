@@ -1,6 +1,6 @@
-package lk.dinuka.util;
+package lk.dinuka.core.util;
 
-import lk.dinuka.model.FormUser;
+import lk.dinuka.core.model.FormUser;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;

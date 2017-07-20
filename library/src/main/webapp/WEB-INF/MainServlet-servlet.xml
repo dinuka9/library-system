@@ -17,14 +17,15 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="userController" class="lk.dinuka.controller.UserController">
+    <bean id="userController" class="lk.dinuka.core.controller.UserController">
         <property name="userService" ref="userServiceImpl"/>
         <property name="memberTypeList" ref="memberTypes"/>
         <property name="bookTypeList" ref="bookTypes"/>
         <property name="userFormValidator" ref="userFormValidator"/>
     </bean>
 
-    <bean id="bookController" class="lk.dinuka.controller.BookController">
+    <bean id="bookController" class="lk.dinuka.core.controller.BookController">
+        <property name="bookService" ref="bookServiceImpl"/>
         <property name="bookTypeList" ref="bookTypes"/>
         <property name="bookFormValidator" ref="booFormValidator"/>
     </bean>
@@ -44,13 +45,13 @@
         <value>Religion</value>
     </util:list>
 
-    <bean id="userServiceImpl" class="lk.dinuka.service.serviceImpl.UserServiceImpl"/>
+    <bean id="userServiceImpl" class="lk.dinuka.core.service.serviceImpl.UserServiceImpl"/>
 
-    <bean id="bookServiceImpl" class="lk.dinuka.service.serviceImpl.BookServiceImpl"/>
+    <bean id="bookServiceImpl" class="lk.dinuka.core.service.serviceImpl.BookServiceImpl"/>
 
-    <bean id="userFormValidator" class="lk.dinuka.util.UserFormValidator"/>
+    <bean id="userFormValidator" class="lk.dinuka.core.util.UserFormValidator"/>
 
-    <bean id="booFormValidator" class="lk.dinuka.util.BookFormValidator"/>
+    <bean id="booFormValidator" class="lk.dinuka.core.util.BookFormValidator"/>
 
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

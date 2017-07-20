@@ -1,9 +1,9 @@
-package lk.dinuka.controller;
+package lk.dinuka.core.controller;
 
-import lk.dinuka.model.FormBook;
-import lk.dinuka.model.FormUser;
-import lk.dinuka.service.UserService;
-import lk.dinuka.util.UserFormValidator;
+import lk.dinuka.core.model.FormBook;
+import lk.dinuka.core.model.FormUser;
+import lk.dinuka.core.service.UserService;
+import lk.dinuka.core.util.UserFormValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -68,8 +68,8 @@ public class UserController {
             modelMap.addAttribute("userFormError", "true");
             return "home";
         } else {
-            nextUserId++;
             userService.registerUser(formUser);
+            nextUserId++;
             return "redirect:/";
         }
     }

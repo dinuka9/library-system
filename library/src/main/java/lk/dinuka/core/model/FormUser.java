@@ -1,19 +1,35 @@
-package lk.dinuka.model;
+package lk.dinuka.core.model;
+
+import java.util.List;
 
 /**
  * Created by dinuka on 7/17/17.
  */
-public class DomainUser {
+public class FormUser {
     private int userId;
     private String userName;
     private String userEmail;
     private String memberType;
+    private List<String> memberTypelist;
 
-    public DomainUser(int userId, String userName, String userEmail, String memberType) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
+    public FormUser() {
+
+    }
+
+    public String getMemberType() {
+        return memberType;
+    }
+
+    public void setMemberType(String memberType) {
         this.memberType = memberType;
+    }
+
+    public List<String> getMemberTypelist() {
+        return memberTypelist;
+    }
+
+    public void setMemberTypelist(List<String> memberTypelist) {
+        this.memberTypelist = memberTypelist;
     }
 
     public int getUserId() {
@@ -39,13 +55,4 @@ public class DomainUser {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-
-    public String getMemberType() {
-        return memberType;
-    }
-
-    public void setMemberType(String memberType) {
-        this.memberType = memberType;
-    }
-
 }

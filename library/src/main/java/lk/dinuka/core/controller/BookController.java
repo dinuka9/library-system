@@ -1,10 +1,10 @@
-package lk.dinuka.controller;
+package lk.dinuka.core.controller;
 
-import lk.dinuka.model.FormBook;
-import lk.dinuka.model.FormUser;
-import lk.dinuka.service.BookService;
-import lk.dinuka.util.BookFormValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import lk.dinuka.core.model.FormBook;
+import lk.dinuka.core.model.FormUser;
+import lk.dinuka.core.service.BookService;
+import lk.dinuka.core.service.serviceImpl.BookServiceImpl;
+import lk.dinuka.core.util.BookFormValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,22 +23,9 @@ import java.util.List;
 public class BookController {
 
     private static int nextBookId = 1;
-    @Autowired
-    private BookService bookService;
     private List<String> bookTypeList;
     private BookFormValidator bookFormValidator;
-
-//    @RequestMapping(value = "/addnewbook", method = RequestMethod.GET)
-//    public String addNewBook(ModelMap modelMap) {
-//        FormBook formBook = new FormBook();
-//
-//        formBook.setBookTypeList(bookTypeList);
-//        formBook.setBookId(nextBookId.get());
-//
-//        modelMap.addAttribute("book", formBook);
-//
-//        return "register_book";
-//    }
+    private BookService bookService;
 
     @RequestMapping(value = "/registerbook", method = RequestMethod.POST)
     public String registerBook(@ModelAttribute("book") FormBook formBook, BindingResult bindingResult,
@@ -85,6 +72,11 @@ public class BookController {
 
     public void setNextBookId(int nextBookId) {
         this.nextBookId = nextBookId;
+    }
+
+
+    public void setBookService(BookServiceImpl bookService) {
+        this.bookService = bookService;
     }
 
 }
