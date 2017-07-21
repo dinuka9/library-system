@@ -2,13 +2,11 @@ package lk.dinuka.core.impl;
 
 import lk.dinuka.core.BookRepository;
 import lk.dinuka.core.domain.DomainBook;
-import lk.dinuka.core.domain.DomainUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,24 +35,21 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public DomainBook getBookById(int bookId) {
-        String sql = "SELECT * FROM book WHERE bookId = ?";
-        DomainBook book = null;
+        String sql = "SELECT * FROM book WHERE bookId = "+bookId;
+        DomainBook book = jdbcTemplate.query(sql, new DomainBookMapper()).get(0);
         return book;
     }
 
     @Override
     public void deleteBookById(int bookId) {
-        String sql = "DELETE FROM book WHERE bookId = ?";
-
+        String sql = "DELETE FROM book WHERE bookId = "+bookId;
+        jdbcTemplate.execute(sql);
     }
 
     @Override
     public void deleteAllBooks() {
-
-    }
-
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
+        String sql = "truncate table book;";
+        jdbcTemplate.execute(sql);
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -71,4 +66,9 @@ public class BookRepositoryImpl implements BookRepository {
             return book;
         }
     }
+
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
 }

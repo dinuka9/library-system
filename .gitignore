@@ -1,4 +1,3 @@
-library-parent.iml
-.idea/
-library/.idea/
+.idea
 *.iml
+*/target/
