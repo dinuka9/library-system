@@ -16,8 +16,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <logback.version>1.0.13</logback.version>
-        <slf4j.version>1.7.5</slf4j.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -47,8 +46,32 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.9</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
     </dependencies>
+
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <outputDirectory>${basedir}/target/site</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+
         <testResources>
             <testResource>
                 <directory>${project.basedir}/src/test/java</directory>
@@ -60,14 +83,6 @@
                 <directory>${project.basedir}/src/test/test-resources</directory>
             </testResource>
         </testResources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
+
 </project>

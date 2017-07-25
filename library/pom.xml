@@ -8,10 +8,6 @@
     <name>library Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <!--<properties>-->
-        <!--<org.springfamework.version>4.3.9.RELEASE</org.springfamework.version>-->
-    <!--</properties>-->
-
     <parent>
         <groupId>lk.dinuka</groupId>
         <artifactId>library-parent</artifactId>
@@ -49,6 +45,17 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
         </dependency>
 
     </dependencies>

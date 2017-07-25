@@ -2,6 +2,8 @@ package lk.dinuka.core.impl;
 
 import lk.dinuka.core.UserRepository;
 import lk.dinuka.core.domain.DomainUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -14,6 +16,8 @@ import java.util.List;
  */
 public class UserRepositoryImpl implements UserRepository {
     private JdbcTemplate jdbcTemplate;
+    private static final Logger LOGGER = LogManager.getLogger(UserRepositoryImpl.class.getName());
+
 
     @Override
     public void saveUser(DomainUser domainUser) {
@@ -22,6 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
                 domainUser.getUserName() + "','" + domainUser.getUserEmail() + "');";
 
         jdbcTemplate.update(query);
+        LOGGER.info("saveUser :: new user saved");
     }
 
     @Override
@@ -30,6 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         List<DomainUser> users = jdbcTemplate.query(sql, new DomainUserMapper());
 
+        LOGGER.info("getAllUsers :: all users loaded");
         return users;
     }
 
@@ -37,18 +43,24 @@ public class UserRepositoryImpl implements UserRepository {
     public DomainUser getUserById(int userId) {
         String sql = "SELECT * FROM user WHERE userId = " + userId;
         DomainUser user = jdbcTemplate.query(sql, new DomainUserMapper()).get(0);
+
+        LOGGER.info("getUserById :: user received id : "+userId);
         return user;
     }
 
     @Override
     public void deleteUserById(int userId) {
         String sql = "DELETE FROM user WHERE userId = "+userId;
+
+        LOGGER.info("deleteUserById :: user deleted id : "+userId);
         jdbcTemplate.execute(sql);
     }
 
     @Override
     public void deleteAllUsers() {
         String sql = "truncate table user;";
+
+        LOGGER.info("deleteAllUsers :: al users deleted");
         jdbcTemplate.execute(sql);
     }
 

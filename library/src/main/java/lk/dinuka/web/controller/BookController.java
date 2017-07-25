@@ -5,6 +5,8 @@ import lk.dinuka.web.model.FormUser;
 import lk.dinuka.web.service.BookService;
 import lk.dinuka.web.service.serviceImpl.BookServiceImpl;
 import lk.dinuka.web.util.BookFormValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,6 +24,7 @@ import java.util.List;
 @SessionAttributes(value = {"user", "book"})
 public class BookController {
 
+    private static final Logger LOGGER = LogManager.getLogger(BookController.class.getName());
     private static int nextBookId = 1;
     private List<String> bookTypeList;
     private BookFormValidator bookFormValidator;
@@ -36,8 +39,13 @@ public class BookController {
             modelMap.addAttribute("user", new FormUser());
             modelMap.addAttribute("book", formBook);
             modelMap.addAttribute("bookFormError", "true");
+
+            LOGGER.warn("registerBook :: book validation failed");
+
             return "home";
         } else {
+            LOGGER.info("registerBook :: book validation success");
+
             bookService.addBook(formBook);
             nextBookId++;
             return "redirect:/";
@@ -47,6 +55,9 @@ public class BookController {
     @RequestMapping(value = "/viewbooks", method = RequestMethod.GET)
     public String viewAllBooks(ModelMap modelMap) {
         modelMap.addAttribute("bookList", bookService.getBookList());
+
+        LOGGER.info("viewAllBooks :: all books loaded");
+
         return "view_books";
     }
 

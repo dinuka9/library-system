@@ -4,6 +4,8 @@ import lk.dinuka.web.model.FormBook;
 import lk.dinuka.web.model.FormUser;
 import lk.dinuka.web.service.UserService;
 import lk.dinuka.web.util.UserFormValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -21,8 +23,8 @@ import java.util.List;
 @SessionAttributes(value = {"user", "book"})
 public class UserController {
 
+    private static final Logger LOGGER = LogManager.getLogger(UserController.class.getName());
     private static int nextUserId = 1;
-
     private UserService userService;
     private UserFormValidator userFormValidator;
     private List<String> memberTypeList;
@@ -42,6 +44,8 @@ public class UserController {
         modelMap.addAttribute("user", formUser);
         modelMap.addAttribute("book", formBook);
 
+        LOGGER.info("homePage :: home page loaded");
+
         return "home";
     }
 
@@ -53,8 +57,13 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             modelMap.addAttribute("user", formUser);
             modelMap.addAttribute("userFormError", "true");
+
+            LOGGER.warn("registerUser :: user from validation failed");
+
             return "home";
         } else {
+            LOGGER.info("registerUser :: user validation success");
+
             userService.registerUser(formUser);
             nextUserId++;
             return "redirect:/";
@@ -65,6 +74,8 @@ public class UserController {
     public String viewUsers(ModelMap model) {
 
         model.addAttribute("userlist", userService.getFormUserList());
+
+        LOGGER.info("viewUsers :: all users loaded");
 
         return "view_users";
     }

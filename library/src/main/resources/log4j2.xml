@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="basePath">${sys:catalina.base}/log</Property>
+    </Properties>
+    <Appenders>
+
+        <File name="library-module"
+                     fileName="${basePath}/library-info.log"
+                     filePattern="${basePath}/library-info-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+        </File>
+
+        <File name="core-logic-module"
+                     fileName="${basePath}/core-info.log"
+                     filePattern="${basePath}/core-logic-info-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+        </File>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace" additivity="false">
+            <appender-ref ref="console"/>
+        </Root>
+        <Logger name="lk.dinuka.web" level="debug" additivity="true">
+            <appender-ref ref="library-module" level="debug"/>
+        </Logger>
+        <Logger name="lk.dinuka.core" level="debug" additivity="true">
+            <appender-ref ref="core-logic-module" level="debug"/>
+        </Logger>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

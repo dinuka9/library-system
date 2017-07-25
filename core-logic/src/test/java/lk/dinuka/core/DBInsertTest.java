@@ -14,9 +14,9 @@ import static org.junit.Assert.assertEquals;
  * Created by dinuka on 7/20/17.
  */
 public class DBInsertTest {
-    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Beans.xml");
-    private UserRepository userRepo = (UserRepository) applicationContext.getBean("userRepositoryImpl");
-    private BookRepository bookRepo = (BookRepository) applicationContext.getBean("bookRepositoryImpl");
+    private ApplicationContext appContext = new ClassPathXmlApplicationContext("Beans.xml");
+    private UserRepository userRepo = (UserRepository) appContext.getBean("userRepositoryImpl");
+    private BookRepository bookRepo = (BookRepository) appContext.getBean("bookRepositoryImpl");
 
 
     @Test
